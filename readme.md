@@ -1,5 +1,5 @@
 ### Rationale
-I haven't found any up-to-date converter running as a http service. New fonts and special characters are not converted correctly by anything else I've tried. This service tries to fix this by always installing the latest libreoffice converter.
+I haven't found any up-to-date converter running as a http service. New fonts and special characters are not converted correctly by anything else I've tried. This service tries to fix this by always installing the latest libreoffice package and writer exporter.
 ## Installation
 
 Run this with Docker, by building it yourself or by using a pre-built image. The converter is served at container port 1488.
