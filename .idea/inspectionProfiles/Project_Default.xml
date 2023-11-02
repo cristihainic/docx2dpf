@@ -1,0 +1,143 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.11" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="119">
+            <item index="0" class="java.lang.String" itemvalue="django-tastypie-swagger" />
+            <item index="1" class="java.lang.String" itemvalue="pysimpleoap" />
+            <item index="2" class="java.lang.String" itemvalue="celery-cloudwatch" />
+            <item index="3" class="java.lang.String" itemvalue="django-pagination" />
+            <item index="4" class="java.lang.String" itemvalue="geckoboard-python" />
+            <item index="5" class="java.lang.String" itemvalue="python-cloudflare" />
+            <item index="6" class="java.lang.String" itemvalue="django-async-messages" />
+            <item index="7" class="java.lang.String" itemvalue="django-embed-video" />
+            <item index="8" class="java.lang.String" itemvalue="django-postgres-extensions" />
+            <item index="9" class="java.lang.String" itemvalue="django-recaptcha" />
+            <item index="10" class="java.lang.String" itemvalue="django-jinja" />
+            <item index="11" class="java.lang.String" itemvalue="factory-boy" />
+            <item index="12" class="java.lang.String" itemvalue="Wand" />
+            <item index="13" class="java.lang.String" itemvalue="line-profiler" />
+            <item index="14" class="java.lang.String" itemvalue="redis" />
+            <item index="15" class="java.lang.String" itemvalue="mock-django" />
+            <item index="16" class="java.lang.String" itemvalue="elasticsearch" />
+            <item index="17" class="java.lang.String" itemvalue="sentry-sdk" />
+            <item index="18" class="java.lang.String" itemvalue="django-suit" />
+            <item index="19" class="java.lang.String" itemvalue="mox" />
+            <item index="20" class="java.lang.String" itemvalue="lxml" />
+            <item index="21" class="java.lang.String" itemvalue="gevent" />
+            <item index="22" class="java.lang.String" itemvalue="django-smartagent" />
+            <item index="23" class="java.lang.String" itemvalue="django-formtools" />
+            <item index="24" class="java.lang.String" itemvalue="mailchimp" />
+            <item index="25" class="java.lang.String" itemvalue="gargoyle-yplan" />
+            <item index="26" class="java.lang.String" itemvalue="vobject" />
+            <item index="27" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="28" class="java.lang.String" itemvalue="mechanize" />
+            <item index="29" class="java.lang.String" itemvalue="simplejson" />
+            <item index="30" class="java.lang.String" itemvalue="redis-collections" />
+            <item index="31" class="java.lang.String" itemvalue="django-haystack" />
+            <item index="32" class="java.lang.String" itemvalue="Pillow-SIMD" />
+            <item index="33" class="java.lang.String" itemvalue="django-test-without-migrations" />
+            <item index="34" class="java.lang.String" itemvalue="sorl-thumbnail" />
+            <item index="35" class="java.lang.String" itemvalue="django-storages" />
+            <item index="36" class="java.lang.String" itemvalue="django-webtest" />
+            <item index="37" class="java.lang.String" itemvalue="gdata" />
+            <item index="38" class="java.lang.String" itemvalue="XlsxWriter" />
+            <item index="39" class="java.lang.String" itemvalue="celery" />
+            <item index="40" class="java.lang.String" itemvalue="django-sortable" />
+            <item index="41" class="java.lang.String" itemvalue="Redis-Semaphore" />
+            <item index="42" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="43" class="java.lang.String" itemvalue="PySimpleSOAP" />
+            <item index="44" class="java.lang.String" itemvalue="phonenumbers" />
+            <item index="45" class="java.lang.String" itemvalue="ftputil" />
+            <item index="46" class="java.lang.String" itemvalue="plotly" />
+            <item index="47" class="java.lang.String" itemvalue="django-compressor" />
+            <item index="48" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="49" class="java.lang.String" itemvalue="python-memcached" />
+            <item index="50" class="java.lang.String" itemvalue="flower" />
+            <item index="51" class="java.lang.String" itemvalue="pandas" />
+            <item index="52" class="java.lang.String" itemvalue="watchdog" />
+            <item index="53" class="java.lang.String" itemvalue="Django" />
+            <item index="54" class="java.lang.String" itemvalue="django-jenkins" />
+            <item index="55" class="java.lang.String" itemvalue="django-rosetta" />
+            <item index="56" class="java.lang.String" itemvalue="google-api-python-client" />
+            <item index="57" class="java.lang.String" itemvalue="http-requests" />
+            <item index="58" class="java.lang.String" itemvalue="pytz" />
+            <item index="59" class="java.lang.String" itemvalue="geoip2" />
+            <item index="60" class="java.lang.String" itemvalue="pyjwt" />
+            <item index="61" class="java.lang.String" itemvalue="unicodecsv" />
+            <item index="62" class="java.lang.String" itemvalue="html5lib" />
+            <item index="63" class="java.lang.String" itemvalue="nexus-yplan" />
+            <item index="64" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="65" class="java.lang.String" itemvalue="psycopg2-binary" />
+            <item index="66" class="java.lang.String" itemvalue="jsonpickle" />
+            <item index="67" class="java.lang.String" itemvalue="kombu" />
+            <item index="68" class="java.lang.String" itemvalue="django-extensions" />
+            <item index="69" class="java.lang.String" itemvalue="django-suit-redactor" />
+            <item index="70" class="java.lang.String" itemvalue="django-multiselectfield" />
+            <item index="71" class="java.lang.String" itemvalue="WeasyPrint" />
+            <item index="72" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="73" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="74" class="java.lang.String" itemvalue="boto" />
+            <item index="75" class="java.lang.String" itemvalue="django-appconf" />
+            <item index="76" class="java.lang.String" itemvalue="django-jsonfield" />
+            <item index="77" class="java.lang.String" itemvalue="watchtower" />
+            <item index="78" class="java.lang.String" itemvalue="django-modeltranslation" />
+            <item index="79" class="java.lang.String" itemvalue="django-mptt" />
+            <item index="80" class="java.lang.String" itemvalue="django-dbbackup" />
+            <item index="81" class="java.lang.String" itemvalue="django-filter" />
+            <item index="82" class="java.lang.String" itemvalue="django-tastypie" />
+            <item index="83" class="java.lang.String" itemvalue="retrying" />
+            <item index="84" class="java.lang.String" itemvalue="mock" />
+            <item index="85" class="java.lang.String" itemvalue="django-recurrence" />
+            <item index="86" class="java.lang.String" itemvalue="oauth2client" />
+            <item index="87" class="java.lang.String" itemvalue="WebTest" />
+            <item index="88" class="java.lang.String" itemvalue="tblib" />
+            <item index="89" class="java.lang.String" itemvalue="mandrill" />
+            <item index="90" class="java.lang.String" itemvalue="django-inlinecss" />
+            <item index="91" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="92" class="java.lang.String" itemvalue="CairoSVG" />
+            <item index="93" class="java.lang.String" itemvalue="django-haystack-panel" />
+            <item index="94" class="java.lang.String" itemvalue="wsgi-request-logger" />
+            <item index="95" class="java.lang.String" itemvalue="coverage" />
+            <item index="96" class="java.lang.String" itemvalue="python-docx" />
+            <item index="97" class="java.lang.String" itemvalue="django-sslserver" />
+            <item index="98" class="java.lang.String" itemvalue="six" />
+            <item index="99" class="java.lang.String" itemvalue="geckoboard.py" />
+            <item index="100" class="java.lang.String" itemvalue="django-debug-toolbar-line-profiler" />
+            <item index="101" class="java.lang.String" itemvalue="python-redis-lock" />
+            <item index="102" class="java.lang.String" itemvalue="argparse" />
+            <item index="103" class="java.lang.String" itemvalue="django-ipware" />
+            <item index="104" class="java.lang.String" itemvalue="django-location-field" />
+            <item index="105" class="java.lang.String" itemvalue="Unidecode" />
+            <item index="106" class="java.lang.String" itemvalue="phpserialize" />
+            <item index="107" class="java.lang.String" itemvalue="cloudflare" />
+            <item index="108" class="java.lang.String" itemvalue="BeautifulSoup" />
+            <item index="109" class="java.lang.String" itemvalue="wsgiref" />
+            <item index="110" class="java.lang.String" itemvalue="django-toolbelt" />
+            <item index="111" class="java.lang.String" itemvalue="futures" />
+            <item index="112" class="java.lang.String" itemvalue="django-tastypie-swagger-python3" />
+            <item index="113" class="java.lang.String" itemvalue="pysimplesoap" />
+            <item index="114" class="java.lang.String" itemvalue="gdata-python3" />
+            <item index="115" class="java.lang.String" itemvalue="mox3" />
+            <item index="116" class="java.lang.String" itemvalue="markupsafe" />
+            <item index="117" class="java.lang.String" itemvalue="ipython" />
+            <item index="118" class="java.lang.String" itemvalue="mailchimp-marketing-python" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="StandardJS" enabled="true" level="ERROR" enabled_by_default="true" />
+  </profile>
+</component>
