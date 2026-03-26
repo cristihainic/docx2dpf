@@ -1,5 +1,6 @@
-import glob
 import os
+import shutil
+import uuid
 from subprocess import Popen
 
 import aiofiles
@@ -8,7 +9,7 @@ from sanic.response import file, text
 
 app = Sanic('docx2pdf')
 
-FILE_PATH = '/tmp/docx2pdf/'
+BASE_PATH = '/tmp/docx2pdf/'
 
 
 async def write_file(path, body):
@@ -30,25 +31,30 @@ async def convert(request):
     if len(request_file.body) > 10485760:
         return text('File exceeds 10MB', status=400)
 
-    if not os.path.exists(FILE_PATH):
-        os.makedirs(FILE_PATH)
+    # create a per-request temp directory to avoid race conditions
+    request_dir = os.path.join(BASE_PATH, uuid.uuid4().hex)
+    os.makedirs(request_dir, exist_ok=True)
 
-    # clear tmp files
-    files = glob.glob(f'{FILE_PATH}*')
-    for f in files:
-        os.remove(f)
+    try:
+        # write file to temp
+        path = os.path.join(request_dir, request_file.name)
+        await write_file(path, request_file.body)
 
-    # write file to temp
-    path = FILE_PATH + request_file.name
-    await write_file(path, request_file.body)
+        # convert the file
+        p = Popen(['libreoffice', '--headless', '--convert-to', 'pdf', path, '--outdir', request_dir])
+        p.wait(timeout=60)
 
-    # convert the file
-    p = Popen(['libreoffice', '--headless', '--convert-to', 'pdf', f'{path}', '--outdir', f'{FILE_PATH}'])
-    p.wait(timeout=60)
+        if p.returncode != 0:
+            return text('Conversion failed', status=500)
 
-    # return the pdf
-    pdf_file = path.replace('.docx', '.pdf')
-    return await file(pdf_file)
+        # return the pdf
+        pdf_file = path.replace('.docx', '.pdf')
+        if not os.path.exists(pdf_file):
+            return text('Conversion produced no output', status=500)
+
+        return await file(pdf_file)
+    finally:
+        shutil.rmtree(request_dir, ignore_errors=True)
 
 
 if __name__ == '__main__':
