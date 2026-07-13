@@ -1,7 +1,7 @@
 import os
 import shutil
 import uuid
-from subprocess import Popen
+from subprocess import Popen, TimeoutExpired
 
 import aiofiles
 from sanic import Sanic
@@ -40,9 +40,19 @@ async def convert(request):
         path = os.path.join(request_dir, request_file.name)
         await write_file(path, request_file.body)
 
-        # convert the file
-        p = Popen(['libreoffice', '--headless', '--convert-to', 'pdf', path, '--outdir', request_dir])
-        p.wait(timeout=60)
+        # convert the file, with an isolated throwaway profile per request so
+        # concurrent or leftover soffice processes never share the profile lock
+        p = Popen([
+            'libreoffice', '--headless',
+            '-env:UserInstallation=file://%s/profile' % request_dir,
+            '--convert-to', 'pdf', path, '--outdir', request_dir,
+        ])
+        try:
+            p.wait(timeout=60)
+        except TimeoutExpired:
+            p.kill()
+            p.wait()
+            return text('Conversion timed out', status=500)
 
         if p.returncode != 0:
             return text('Conversion failed', status=500)
