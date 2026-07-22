@@ -1,5 +1,6 @@
 import os
 import shutil
+import signal
 import uuid
 from subprocess import Popen, TimeoutExpired
 
@@ -41,16 +42,22 @@ async def convert(request):
         await write_file(path, request_file.body)
 
         # convert the file, with an isolated throwaway profile per request so
-        # concurrent or leftover soffice processes never share the profile lock
+        # concurrent or leftover soffice processes never share the profile lock;
+        # start_new_session puts the whole tree (sh -> oosplash -> soffice.bin)
+        # in its own process group, because killing only the direct child leaks
+        # a live soffice.bin on every timeout until the container can't fork
         p = Popen([
             'libreoffice', '--headless',
             '-env:UserInstallation=file://%s/profile' % request_dir,
             '--convert-to', 'pdf', path, '--outdir', request_dir,
-        ])
+        ], start_new_session=True)
         try:
             p.wait(timeout=60)
         except TimeoutExpired:
-            p.kill()
+            try:
+                os.killpg(p.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
             p.wait()
             return text('Conversion timed out', status=500)
 
