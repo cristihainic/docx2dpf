@@ -9,7 +9,7 @@ docker pull cristihainic/docx2pdf
 docker run --init -p 1488:1488 cristihainic/docx2pdf 
 ```
 
-`--init` is required, not optional: every conversion runs LibreOffice with a fresh throwaway profile, and the profile bootstrap leaves behind an orphan `soffice.bin` process that only a real init process (PID 1) can reap. Without `--init` these zombies accumulate until the container can no longer fork and every conversion fails with `Cannot fork`.
+`--init` is required, not optional: every conversion runs LibreOffice with a fresh throwaway profile, and the profile bootstrap leaves orphan processes behind (five per conversion with LibreOffice 26.8) that only a real init process (PID 1) can reap. Without `--init` these zombies accumulate until the container can no longer fork and every conversion fails with `Cannot fork`.
 
 The full recommended command for production:
 
@@ -26,13 +26,16 @@ docker run -d --name docx2pdf \
 
 - `--pids-limit 512` caps the damage of any future process leak so it can't starve other services on the host (a single conversion tree uses a few dozen PIDs, so there's plenty of headroom).
 - The `--log-opt` flags keep container logs from growing unbounded.
-- `WHITELISTED_IPS` is optional — see [Security](#security) below.
+- `WHITELISTED_IPS` is optional, see [Security](#security) below.
 
 ## Usage
 Make a `POST` request to `/convert` with your docx file. The response will contain a pdf file:
 ```python
 curl --form file=@my_file.docx http://localhost:1488/convert > my_file.pdf
 ```
+
+## Fonts
+The image ships metric-compatible stand-ins for the common Microsoft fonts: Liberation (Arial, Times New Roman, Courier New), Carlito (Calibri) and Caladea (Cambria). Text set in these fonts takes the same width as in Word, so line and page breaks match. Fonts with no free metric-compatible clone (Aptos, Verdana, Tahoma, Georgia, ...) fall back to DejaVu Sans or DejaVu Serif, which are wider, so lines may break differently than in Word. Use one of the fonts above in documents whose layout matters.
 
 ## Security
 #### IP whitelisting
